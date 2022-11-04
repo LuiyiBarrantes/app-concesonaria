@@ -44,10 +44,25 @@ let concesionaria = {
          return persona.capacidadDePagoEnCuotas >= (auto.precio/auto.cuotas) && persona.capacidadDePagoTotal >= auto.precio
       },
       autosQuePuedeComprar: function (persona) {
-         let autosQuePuedeComprar = this.autosParaLaVenta().filter(function (auto) {
+         return  this.autosParaLaVenta().filter(auto=>
+          this.puedeComprar(auto,persona)
+       )
+   }
+   /*let autosQuePuedeComprar = this.autosParaLaVenta().filter(function (auto) {
             return this.puedeComprar(auto, persona)
          })
          return autosQuePuedeComprar
-      }
+         },
+   autosQuePuedeComprar: function (persona) {
+       return  this.autosParaLaVenta().filter(auto=>
+          this.puedeComprar(auto,persona)
+       )
+   } return
+   this.autosParaLaVenta().filter(function(auto){
+         return this.puedeComprar(auto,persona)
+       })
+    */
+}
+   
 }
 console.log(concesionaria.autosQuePuedeComprar(personas[0]) );
